@@ -133,7 +133,10 @@ def validate_font_manifest() -> None:
 
 
 def build_zip() -> None:
-    files = sorted(path for path in PACK.rglob("*") if path.is_file())
+    files = sorted(
+        (path for path in PACK.rglob("*") if path.is_file()),
+        key=lambda path: path.relative_to(PACK).as_posix(),
+    )
     with zipfile.ZipFile(OUTPUT, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for path in files:
             relative = path.relative_to(PACK).as_posix()
