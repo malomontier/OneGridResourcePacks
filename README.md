@@ -4,6 +4,8 @@ Pack de ressources officiel du serveur OneGrid pour Minecraft Java 26.1.
 
 Il fournit uniquement la couche visuelle du HUD : panneaux gris translucides, icones pixel-art et espacements precis. Les valeurs restent calculees par les plugins OneGrid et les libelles conservent la police UI du serveur.
 
+Les panneaux suivent le cadre OneGrid conserve dans `sources/hud_panel_reference.png` : interieur `#353535` a 45 % d'opacite, bord `#484848` a 25 % d'opacite et coins pixel-art decales. Le pack encode ces valeurs en RGBA (`#35353573` et `#48484840`) sans ajouter de teinte, de degrade ou d'ombre. La reference 210x30 est reproduite sur sa grille native 105x15, puis declinee selon la largeur du contenu.
+
 ## Principes
 
 - aucun remplacement global de la police Minecraft ;

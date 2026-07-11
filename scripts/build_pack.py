@@ -17,6 +17,9 @@ SOURCES = ROOT / "sources"
 OUTPUT = ROOT / "onegrid-hud.zip"
 
 PANEL_WIDTHS = (48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256, 288, 320)
+PANEL_HEIGHT = 15
+PANEL_FILL = (0x35, 0x35, 0x35, 115)  # #353535 at 45% opacity
+PANEL_BORDER = (0x48, 0x48, 0x48, 64)  # #484848 at 25% opacity
 NOTCHES = (6, 10, 12, 20)
 
 
@@ -42,28 +45,42 @@ def write_rgba_png(path: Path, width: int, height: int, pixels: list[tuple[int, 
     path.write_bytes(payload)
 
 
-def panel_pixels(width: int, height: int = 12) -> list[tuple[int, int, int, int]]:
+def panel_pixels(width: int, height: int = PANEL_HEIGHT) -> list[tuple[int, int, int, int]]:
+    """Render the native 1x form of the supplied 210x30 HUD frame.
+
+    The reference uses a two-pixel grid. At the resource-pack's native scale,
+    that becomes a one-pixel bevel with the same deliberately offset corners.
+    """
+    if width < 5 or height < 5:
+        raise ValueError("HUD panels must be at least 5x5 pixels")
+
     transparent = (0, 0, 0, 0)
-    highlight = (180, 190, 208, 132)
-    edge = (104, 119, 143, 138)
-    fill = (24, 32, 46, 136)
-    shadow = (10, 14, 22, 168)
 
     pixels: list[tuple[int, int, int, int]] = []
     for y in range(height):
         for x in range(width):
-            if (x, y) in {(0, 0), (width - 1, 0), (0, height - 1), (width - 1, height - 1)}:
-                pixels.append(transparent)
-            elif y == 0:
-                pixels.append(highlight)
+            if y == 0:
+                pixels.append(PANEL_BORDER if 1 <= x < width - 2 else transparent)
+            elif y == 1:
+                if x < 2:
+                    pixels.append(PANEL_BORDER)
+                elif x < width - 1:
+                    pixels.append(PANEL_FILL)
+                else:
+                    pixels.append(transparent)
+            elif y == height - 2:
+                if x == 0:
+                    pixels.append(transparent)
+                elif x < width - 2:
+                    pixels.append(PANEL_FILL)
+                else:
+                    pixels.append(PANEL_BORDER)
             elif y == height - 1:
-                pixels.append(shadow)
-            elif x == 0:
-                pixels.append(edge)
-            elif x == width - 1:
-                pixels.append(shadow)
+                pixels.append(PANEL_BORDER if 2 <= x < width - 1 else transparent)
+            elif x == 0 or x == width - 1:
+                pixels.append(PANEL_BORDER)
             else:
-                pixels.append(fill)
+                pixels.append(PANEL_FILL)
     return pixels
 
 
@@ -104,7 +121,7 @@ def copy_brand_assets() -> None:
 def generate_panels() -> None:
     texture_dir = PACK / "assets" / "onegrid" / "textures" / "font"
     for width in PANEL_WIDTHS:
-        write_rgba_png(texture_dir / f"panel_{width}.png", width, 12, panel_pixels(width))
+        write_rgba_png(texture_dir / f"panel_{width}.png", width, PANEL_HEIGHT, panel_pixels(width))
     write_rgba_png(texture_dir / "coin.png", 9, 9, coin_pixels())
 
 
