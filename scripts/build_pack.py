@@ -42,13 +42,12 @@ def write_rgba_png(path: Path, width: int, height: int, pixels: list[tuple[int, 
     path.write_bytes(payload)
 
 
-def panel_pixels(width: int, height: int = 13) -> list[tuple[int, int, int, int]]:
+def panel_pixels(width: int, height: int = 11) -> list[tuple[int, int, int, int]]:
     transparent = (0, 0, 0, 0)
-    highlight = (190, 198, 214, 142)
-    edge = (106, 116, 133, 158)
-    fill = (25, 28, 35, 142)
-    inner = (40, 44, 54, 148)
-    shadow = (8, 10, 15, 190)
+    highlight = (180, 190, 208, 132)
+    edge = (104, 119, 143, 138)
+    fill = (24, 32, 46, 136)
+    shadow = (10, 14, 22, 168)
 
     pixels: list[tuple[int, int, int, int]] = []
     for y in range(height):
@@ -63,8 +62,6 @@ def panel_pixels(width: int, height: int = 13) -> list[tuple[int, int, int, int]
                 pixels.append(edge)
             elif x == width - 1:
                 pixels.append(shadow)
-            elif y == 1 or x == 1:
-                pixels.append(inner)
             else:
                 pixels.append(fill)
     return pixels
@@ -107,7 +104,7 @@ def copy_brand_assets() -> None:
 def generate_panels() -> None:
     texture_dir = PACK / "assets" / "onegrid" / "textures" / "font"
     for width in PANEL_WIDTHS:
-        write_rgba_png(texture_dir / f"panel_{width}.png", width, 13, panel_pixels(width))
+        write_rgba_png(texture_dir / f"panel_{width}.png", width, 11, panel_pixels(width))
     write_rgba_png(texture_dir / "coin.png", 9, 9, coin_pixels())
 
 

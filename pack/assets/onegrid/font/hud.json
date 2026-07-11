@@ -45,99 +45,99 @@
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_48.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE120"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_64.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE121"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_80.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE122"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_96.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE123"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_112.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE124"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_128.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE125"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_144.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE126"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_160.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE127"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_176.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE128"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_192.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE129"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_224.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE12A"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_256.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE12B"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_288.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE12C"]
     },
     {
       "type": "bitmap",
       "file": "onegrid:font/panel_320.png",
-      "height": 13,
-      "ascent": 10,
+      "height": 11,
+      "ascent": 9,
       "chars": ["\uE12D"]
     }
   ]
