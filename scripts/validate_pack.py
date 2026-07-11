@@ -41,7 +41,7 @@ def main() -> None:
     for width in EXPECTED_PANELS:
         path = PACK / "assets" / "onegrid" / "textures" / "font" / f"panel_{width}.png"
         require(path.is_file(), f"Missing {path.relative_to(ROOT)}")
-        require(png_size(path.read_bytes()) == (width, 11), f"Invalid panel dimensions: {path.name}")
+        require(png_size(path.read_bytes()) == (width, 12), f"Invalid panel dimensions: {path.name}")
 
     bossbar_dir = PACK / "assets" / "minecraft" / "textures" / "gui" / "sprites" / "boss_bar"
     bossbar_files = sorted(bossbar_dir.glob("*.png"))
